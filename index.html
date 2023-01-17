@@ -5,29 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=>, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div class="container">
       <div class="weather">
-        <h1>New York</h1>
-        <ul>
-          <li>Friday</li>
-          <li>Clear Sky</li>
-        </ul>
+        <h1 id="live">New York</h1>
+        <div id="description"></div>
+        <div id="date"></div>
+        <form class="work" id="search-input" class="mb-4">
+          <input
+            type="text"
+            class="write"
+            placeholder="search for location"
+            autocomplete="off"
+            autofocus="on"
+            id="film"
+            class="form-control"
+          />
+          <input
+            type="submit"
+            value="search"
+            class="fill"
+            id="country-input"
+            class="btn btn-primary"
+          />
+        </form>
+
+        <img src="#" class="float-left" id="icon" alt="Clear" />
         <div class="row">
-          <div class="col-xl-6">
-            <img src="https://images.app.goo.gl/iuFni9anrNQPASwF9" />
-            12°F|C
+          <div class="col-xl-1">
+            <strong class="fill" id="temperature"
+              ><a href="" id="celsius-link" class="active">°C</a> |<a
+                href=""
+                id="far-link"
+                >°F</a
+              ></strong
+            >
+          </div>
+          <div class="row">
+            <div class="col-xl-1">
+              <ul>
+                <li id="precipitation">Precipitation: 0%</li>
+                <li id="humidity">Humidity: 70%</li>
+                <li id="wind">Wind: 2km/h</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-xl-6">
-        <ul>
-          <li>Precipitation: 0%</li>
-          <li>Humidity: 70%</li>
-          <li>Wind: 2km/h</li>
-        </ul>
-      </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
