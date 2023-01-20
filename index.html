@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=>, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link
       rel="stylesheet"
@@ -27,7 +28,7 @@
             autocomplete="off"
             autofocus="on"
             id="film"
-            class="form-control"
+            class="form-control form-control-lg"
           />
           <input
             type="submit"
@@ -37,21 +38,19 @@
             class="btn btn-primary"
           />
         </form>
-
         <img src="#" class="float-left" id="icon" alt="Clear" />
         <div class="row">
           <div class="col-xl-1">
-            <strong class="fill" id="temperature"
-              ><a href="" id="celsius-link" class="active">°C</a> |<a
-                href=""
-                id="far-link"
-                >°F</a
-              ></strong
+            <strong class="fill" id="temperature"></strong
+            ><a href="" id="celsius-link" class="active">°C</a> |<a
+              href=""
+              id="far-link"
+              >°F</a
             >
           </div>
           <div class="row">
             <div class="col-xl-1">
-              <ul>
+              <ul class="obtions">
                 <li id="precipitation">Precipitation: 0%</li>
                 <li id="humidity">Humidity: 70%</li>
                 <li id="wind">Wind: 2km/h</li>
@@ -61,6 +60,6 @@
         </div>
       </div>
     </div>
-    <script src="app.js"></script>
+    <script src="src/app.js"></script>
   </body>
 </html>

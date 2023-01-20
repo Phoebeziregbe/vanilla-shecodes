@@ -23,6 +23,8 @@ function formatDate(timestamp) {
 
 function displayTemperature(response) {
   console.log(response.data);
+  celsiusElement = response.data.main.temp;
+
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusElement);
   let liveElement = document.querySelector("#live");
@@ -34,17 +36,15 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector("#date");
-  dateElement.innerHTML = formatDate(respne.data.dt * 1000);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", `response.data.weather[0].icon`);
-
-  celsiusElement = response.data.main.temp;
+  console.log(response.data);
 }
-
 function theHandle(city) {
   let apiKey = "d1da563db17a36b0f688b57d60b0a5d7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
@@ -61,26 +61,25 @@ function search(event) {
 
 function farTemperature(event) {
   event.preventDefault();
-  celsiusLink.classlist.remove("active");
-  farLink.classlist.add("active");
+  celsiusLink.classList.remove("active");
+  farLink.classList.add("active");
   let fahrenheiTemp = (celsiusElement * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = fahrenheiTemp;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemp);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  celsiusLink.classlist.remove("active");
-  farLink.classlist.add("active");
-  let temperatureElement = document.querySelector("temperature");
+  celsiusLink.classList.remove("active");
+  farLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusElement);
 }
 
-let form = document.querySelector("#search-input");
-form.addEventListener("submit", search);
-
-let farLinkElement = document.querySelector("#far-link");
+let farLink = document.querySelector("#far-link");
 farLink.addEventListener("click", farTemperature);
 
-let celsiusLinkElement = document.querySelector("#celsius-link");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+let form = document.querySelector("#search-input");
+form.addEventListener("submit", search);

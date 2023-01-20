@@ -1,1 +1,13 @@
-
+.weather {
+  font-family: arial, sans-serif;
+  color: #202124;
+  font-size: 22px;
+  line-height: 26px;
+}
+h1 {
+  text-align: right;
+  line-height: 22px;
+}
+.obtions {
+  list-style: none;
+}
