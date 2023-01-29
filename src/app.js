@@ -47,10 +47,9 @@ function displayTemperature(response) {
 }
 function theHandle(city) {
   let apiKey = "d1da563db17a36b0f688b57d60b0a5d7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
-
 let celsiusElement = null;
 
 function search(event) {
