@@ -48,9 +48,9 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute("alt", `response.data.weather[0].icon`);
+  iconElement.setAttribute("alt", `${response.data.weather[0].icon}`);
   console.log(response.data);
-  getForecast(respose.data.coord);
+  getForecast(response.data.coord);
 }
 function theHandle(city) {
   let apiKey = "d1da563db17a36b0f688b57d60b0a5d7";
@@ -68,37 +68,36 @@ function search(event) {
 function farTemperature(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
-  farLink.classList.add("active");
+  far - link.classList.add("active");
   let fahrenheiTemp = (celsiusElement * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheiTemp);
-}
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  farLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusElement);
-}
+  function displayCelsiusTemperature(event) {
+    event.preventDefault();
+    celsiusLink.classList.remove("active");
+    farLink.classList.add("active");
+    let temperatureElement = document.querySelector("#temperature");
+    temperatureElement.innerHTML = Math.round(celsiusElement);
+  }
 
-function formatDay(timestamp) {
-  let fordate = new Date(timestamp * 1000);
-  let day = date.getDay;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  function formatDay(timestamp) {
+    let fordate = new Date(timestamp * 1000);
+    let day = date.getDay;
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[day];
-}
+    return days[day];
+  }
 
-function displayForecast(response) {
-  let forecastElement = document.querySelector(`#forecast`);
-  forecast = response.data.daily;
-  let forecastHTML = `<div class =row`;
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
-      forecastHTML =
-        forecastHTML +
-        `<div class="col-2" >
+  function displayForecast(response) {
+    let forecastElement = document.querySelector(`#forecast`);
+    forecast = response.data.daily;
+    let forecastHTML = `<div class =row>`;
+    forecast.forEach(function (forecastDay, index) {
+      if (index < 6) {
+        forecastHTML =
+          forecastHTML +
+          `<div class="col-2" >
       <div class="weak">${formatDay(forecastDay.dt)}</div>;
       <img src="http://openweathermap.org/img/wn/${forecastDay}.weather[0].icon}@2x.png"
       alt=""
@@ -113,14 +112,17 @@ function displayForecast(response) {
         forecastDay.temp.min
       )} °</span>
     </div>`;
-    }
-  });
+      }
+    });
+  }
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+  let farLink = document.querySelector("#far-link");
+  farLink.addEventListener("click", farTemperature);
+
+  let celsiusLink = document.querySelector("#celsius-link");
+  celsiusLink.addEventListener("click", displayCelsiusTemperature);
+  let form = document.querySelector("#search-input");
+  form.addEventListener("submit", search);
 }
-
-let farLink = document.querySelector("#far-link");
-farLink.addEventListener("click", farTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-let form = document.querySelector("#search-input");
-form.addEventListener("submit", search);
