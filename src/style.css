@@ -11,3 +11,8 @@ h1 {
 .obtions {
   list-style: none;
 }
+.foot p {
+  font-size: 9px;
+  text-align: center;
+  font-style: italic;
+}
